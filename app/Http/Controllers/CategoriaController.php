@@ -14,7 +14,8 @@ class CategoriaController extends Controller
      */
     public function index()
     {
-        //
+        $categorias = Categoria::all();
+        return view('admin.categoria.index',["categoria"=>$categorias]);
     }
 
     /**
@@ -24,7 +25,8 @@ class CategoriaController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.categoria.create');
+   
     }
 
     /**
@@ -35,7 +37,10 @@ class CategoriaController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $categoria = new Categoria;
+        $categoria->nome = $request->nome;
+        $categoria->save();
+        return view('admin.categoria.create',['mensagens'=>'categoria "'.$request->nome.'" adicionada com sucesso']);
     }
 
     /**

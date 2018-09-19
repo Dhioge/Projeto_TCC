@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Subcategoria;
+use App\Categoria;
 use Illuminate\Http\Request;
 
 class SubcategoriaController extends Controller
@@ -14,7 +15,9 @@ class SubcategoriaController extends Controller
      */
     public function index()
     {
-        //
+        $subcategorias = Subcategoria::all();
+        $categorias = categoria::all();
+        return view('admin.subcategoria.index',['subcategorias'=>$subcategorias,'categorias'=> $categorias]);
     }
 
     /**
@@ -24,7 +27,8 @@ class SubcategoriaController extends Controller
      */
     public function create()
     {
-        //
+        $categorias = Categoria::all();
+        return view('admin.subcategoria.create',['categorias'=>$categorias]);
     }
 
     /**
@@ -35,7 +39,11 @@ class SubcategoriaController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $subcategoria = new Subcategoria;
+        $subcategoria->nome = $request->nome;
+        $subcategoria->categoria_id = $request->categoria_id;
+        $subcategoria->save();
+        return view('admin.subcategoria.index',['mensagens'=>'subcategoria "'.$request->nome.'" adicionada com sucesso']);
     }
 
     /**

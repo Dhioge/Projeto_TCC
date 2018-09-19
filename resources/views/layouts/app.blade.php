@@ -24,7 +24,7 @@
 @endempty
 
 
-@yield('content')
+@yield('body')
 
 @empty($hidenav)
     @include('layouts.nav')

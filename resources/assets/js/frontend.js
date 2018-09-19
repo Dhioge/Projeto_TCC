@@ -1,5 +1,5 @@
 var lineChartData = {
-    labels: ["January", "February", "March", "April", "May", "June", "July"],
+    labels: ["Janeiro", "Fevereiro", "Março", "Abril", "Naio", "Junho", "Julho"],
     datasets: [
         {
             label: "My First dataset",
