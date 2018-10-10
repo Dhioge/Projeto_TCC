@@ -16,7 +16,7 @@ class SubcategoriaController extends Controller
     public function index()
     {
         $subcategorias = Subcategoria::all();
-        $categorias = categoria::all();
+        $categorias = Categoria::all();
         return view('admin.subcategoria.index',['subcategorias'=>$subcategorias,'categorias'=> $categorias]);
     }
 
@@ -43,7 +43,7 @@ class SubcategoriaController extends Controller
         $subcategoria->nome = $request->nome;
         $subcategoria->categoria_id = $request->categoria_id;
         $subcategoria->save();
-        return view('admin.subcategoria.index',['mensagens'=>'subcategoria "'.$request->nome.'" adicionada com sucesso']);
+        return redirect(route('subcategoria_index'));
     }
 
     /**
@@ -63,9 +63,13 @@ class SubcategoriaController extends Controller
      * @param  \App\Subcategoria  $subcategoria
      * @return \Illuminate\Http\Response
      */
-    public function edit(Subcategoria $subcategoria)
+    public function edit(Subcategoria $subcategoria,$id)
     {
-        //
+        $subcategoria = Subcategoria::where('id',$id)->first();
+        $categoria = Categoria::where('id',$subcategoria->categoria_id)->first();
+        $categorias = Categoria::all();
+        return view('admin.subcategoria.edit',['subcategoria'=>$categoria,'categoria_selected'=>$categoria,'categorias'=>$categorias]);
+   
     }
 
     /**
@@ -77,7 +81,11 @@ class SubcategoriaController extends Controller
      */
     public function update(Request $request, Subcategoria $subcategoria)
     {
-        //
+        $subcategoria = Subcategoria::find($request->id);
+        $subcategoria->categoria_id = $request->categoria_id;
+        $subcategoria->nome = $request->nome;
+        $subcategoria->save();
+        return redirect(route('subcategoria_index'));  
     }
 
     /**

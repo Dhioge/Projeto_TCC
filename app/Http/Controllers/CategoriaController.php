@@ -40,7 +40,7 @@ class CategoriaController extends Controller
         $categoria = new Categoria;
         $categoria->nome = $request->nome;
         $categoria->save();
-        return view('admin.categoria.create',['mensagens'=>'categoria "'.$request->nome.'" adicionada com sucesso']);
+        return redirect(route('categoria_index'));    
     }
 
     /**
@@ -60,9 +60,10 @@ class CategoriaController extends Controller
      * @param  \App\Categoria  $categoria
      * @return \Illuminate\Http\Response
      */
-    public function edit(Categoria $categoria)
+    public function edit(Categoria $categoria,$id)
     {
-        //
+         $categoria = Categoria::where('id',$id)->first();
+         return view('admin.categoria.edit',['categoria'=>$categoria]);
     }
 
     /**
@@ -73,8 +74,11 @@ class CategoriaController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, Categoria $categoria)
-    {
-        //
+    {   
+        $categoria = Categoria::find($request->id);
+        $categoria->nome = $request->nome;
+        $categoria->update();
+        return redirect(route('categoria_index'));
     }
 
     /**
@@ -85,6 +89,7 @@ class CategoriaController extends Controller
      */
     public function destroy(Categoria $categoria)
     {
-        //
+        
+        $categoria = Categoria::find($request->id);
     }
 }

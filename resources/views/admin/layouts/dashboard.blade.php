@@ -21,28 +21,28 @@
                 </a>
             </li>
             <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Categorias">
-                <a class="nav-link" href="{{ url('/admin/categorias') }}">
+                <a class="nav-link" href="{{ url('/admin/lojas') }}">
                     <i class="fa fa-fw fa-area-chart"></i>
-                    <span class="nav-link-text">Categorias</span>
+                    <span class="nav-link-text">Lojas</span>
                 </a>
             </li>
             <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Subcategorias">
-                <a class="nav-link" href="{{ url('/admin/subcategorias') }}">
+                <a class="nav-link" href="{{ url('/admin/produtos') }}">
                     <i class="fa fa-fw fa-table"></i>
-                    <span class="nav-link-text">Subcategorias</span>
+                    <span class="nav-link-text">Produtos</span>
                 </a>
             </li>
             <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Clientes">
                 <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseComponents" data-parent="#exampleAccordion">
                     <i class="fa fa-fw fa-wrench"></i>
-                    <span class="nav-link-text">Clientes</span>
+                    <span class="nav-link-text">Configurações</span>
                 </a>
                 <ul class="sidenav-second-level collapse" id="collapseComponents">
                     <li>
-                        <a href="{{ url('/admin/lojas') }}">Lojas</a>
+                        <a href="{{ url('/admin/categorias') }}">Categorias</a>
                     </li>
                     <li>
-                        <a href="{{ url('/admin/produtos') }}">Produtos</a>
+                        <a href="{{ url('/admin/subcategorias') }}">Subcategorias</a>
                     </li>
                 </ul>
             </li>

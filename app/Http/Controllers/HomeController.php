@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Produto;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -23,7 +23,8 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('admin.home');
+        $produtos = Produto::paginate(15);
+        return view('index',["produtos" => $produtos]);
     }
 
 }

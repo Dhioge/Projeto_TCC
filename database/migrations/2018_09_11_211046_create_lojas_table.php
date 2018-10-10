@@ -16,6 +16,8 @@ class CreateLojasTable extends Migration
         Schema::create('lojas', function (Blueprint $table) {
             $table->increments('id');
             $table->string('nome');
+            $table->string('site');
+            $table->string('slug');
             $table->timestamps();
         });
     }

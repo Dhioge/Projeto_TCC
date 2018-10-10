@@ -6,7 +6,7 @@
 
 <div class="card mb-3">
         <div class="card-header">
-          <i class="fa fa-table"></i> Categoria</div>
+          <i class="fa fa-table"></i> Subcategorias</div>
         <div class="card-body">
           <div class="table-responsive">
               @if (isset($mensagens))
@@ -14,12 +14,13 @@
               <strong>{{ $mensagens }}</strong>
           </span>
           @endif
-         
+          <a href="{{ route('subcategoria_create') }}" class="btn btn-success">Adicionar</a>
             <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
               <thead>
                 <tr>
                 <th>Categoria</th>
                 <th>Subcategoria</th>
+                <th>Ação</th>
                 </tr>
               </thead>
               <tbody>
@@ -32,6 +33,7 @@
                     @endif
                     @endforeach
                     <td>{{ $item->nome}}</td>
+                    <td><a href="{{ url('/admin/subcategorias/edit/'.$item->id)}}" class="btn btn-info">Editar</a><a href="" class="btn btn-danger">Excluir</a></td>
                     </tr>
                 @endforeach
               </tbody>

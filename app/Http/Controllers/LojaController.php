@@ -13,8 +13,9 @@ class LojaController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
-        //
+    { 
+        $loja = Loja::all();
+        return view('admin.loja.index',['lojas'=> $loja]);
     }
 
     /**
@@ -24,7 +25,7 @@ class LojaController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.loja.create');
     }
 
     /**
@@ -35,7 +36,12 @@ class LojaController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $loja = new Loja;
+        $loja->nome = $request->nome;
+        $loja->site = $request->site;
+        $loja->slug = $request->slug;
+        $loja->save();
+        return redirect(route('loja_index'));  
     }
 
     /**
@@ -55,9 +61,11 @@ class LojaController extends Controller
      * @param  \App\Loja  $loja
      * @return \Illuminate\Http\Response
      */
-    public function edit(Loja $loja)
+    public function edit(Loja $loja, $id)
     {
-        //
+        $loja = Loja::where('id',$id)->get();
+        $loja=$loja[0];
+        return view('admin.loja.edit',['loja'=>$loja]);
     }
 
     /**
@@ -69,7 +77,13 @@ class LojaController extends Controller
      */
     public function update(Request $request, Loja $loja)
     {
-        //
+        $loja = Loja::find($request->id);
+        $loja->nome = $request->nome;
+        $loja->site = $request->site;
+        $loja->slug = $request->slug;
+        $loja->save();
+        return redirect(route('loja_index'));  
+   
     }
 
     /**
