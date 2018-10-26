@@ -246,7 +246,7 @@
                     @slot('panelBody')
                         <div class="list-group">
                             <a href="#" class="list-group-item">
-                                <i class="fa fa-comment fa-fw"></i> New Comment
+                                <i class="fa fa-comment fa-fw"></i> New asd
                                 <span class="pull-right text-muted small"><em>4 minutes ago</em></span>
                             </a>
                             <a href="#" class="list-group-item">

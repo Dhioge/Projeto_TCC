@@ -13,7 +13,6 @@ class HomeController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth');
     }
 
     /**
@@ -24,7 +23,7 @@ class HomeController extends Controller
     public function index()
     {
         $produtos = Produto::paginate(15);
-        return view('index',["produtos" => $produtos]);
+        return view('home.index',["produtos" => $produtos]);
     }
 
 }

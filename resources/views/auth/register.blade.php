@@ -1,6 +1,7 @@
 @extends ('admin.layouts.app')
 @section ('body')
 <div class="container">
+        <a href="{{ route('login') }}" class="btn btn-primary float-right">Voltar</a> 
     <div class="row" style="margin-top: 100px;">
         <div class="col-md-6 col-md-offset-3">
             @component('admin.widgets.panel')
@@ -67,9 +68,12 @@
                             </div>
                         </div>
                     </form>
+                   
                     @endslot
                     @endcomponent
+                    
                 </div>
             </div>
         </div>
+
 @endsection

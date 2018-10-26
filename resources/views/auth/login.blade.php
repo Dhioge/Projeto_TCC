@@ -1,8 +1,11 @@
 @extends ('admin.layouts.app')
 @section ('body')
-    <div class="container">
-        <div class="row" style="margin-top: 100px;">
-            <div class="col-md-4 col-md-offset-4">
+<a href="{{ route('index') }}" class="btn btn-primary float-right">Voltar</a>
+<div class="container py-5">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="row">
+                <div class="col-md-6 mx-auto">
                 @component('admin.widgets.panel')
                     @slot ('panelTitle', 'Entrar')
                     @slot ('panelBody')
@@ -38,11 +41,10 @@
                             </div>
 
                             <div class="form-group">
-                                <div class="col-md-offset-3 col-md-6 text-center">
-                                    <div class="checkbox-inline">
+                                <div class="col-md-offset-6 col-md-6 text-center">
+                                    <div class="checkbox-block">
                                         <label>
-                                            <input type="checkbox"
-                                                   name="remember" {{ old('remember') ? 'checked' : '' }}> Lembrar
+                                            <input type="checkbox" name="remember" {{ old('remember') ? 'checked' : '' }}> Lembrar
                                         </label>
                                     </div>
                                 </div>
@@ -60,10 +62,20 @@
                                     </a>
                                 </div>
                             </div>
+                             
                         </form>
                     @endslot
                 @endcomponent
             </div>
+
+
         </div>
+        <!--/row-->
+
     </div>
+    <!--/col-->
+</div>
+<!--/row-->
+</div>
+
 @endsection

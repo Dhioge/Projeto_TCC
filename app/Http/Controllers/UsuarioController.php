@@ -1,8 +1,11 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Produto;
 use App\Usuario;
+use App\ProdutoAlteracoes;
+use App\Notificacoes;
+use DataTables;
 use Illuminate\Http\Request;
 
 class UsuarioController extends Controller
@@ -11,7 +14,15 @@ class UsuarioController extends Controller
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
+     * 
      */
+
+    public function __construct(){
+        $this->middleware('UserCheck');
+    setlocale(LC_TIME, 'pt_BR', 'pt_BR.utf-8', 'pt_BR.utf-8', 'portuguese');
+    date_default_timezone_set('America/Sao_Paulo');
+    }
+    
     public function index()
     {
         return view('usuario.inicial');
@@ -22,9 +33,10 @@ class UsuarioController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function search(Request $request)
     {
-        //
+        return datatables()->of(Produto::all())->toJson();
+
     }
 
     /**
@@ -33,9 +45,24 @@ class UsuarioController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function enviar_sugestao(Request $request)
     {
-        //
+
+        $notificacao = new Notificacoes;
+        $notificacao->usuario_id = $request->usuario_id;
+        $notificacao->tipo = 'alteracao_produto';
+        $notificacao->titulo = 'Sugestão de Atualização';
+        $notificacao->texto = 'Alteração do Produto '.$request->nome;
+        $notificacao->destinatario = 'admin';
+        $notificacao->save();
+        $produto = new ProdutoAlteracoes;
+        $produto->notificacao_id = $notificacao->id;
+        $produto->produto_id = $request->id;
+        $produto->nome = $request->nome;
+        $produto->descricao = $request->descricao;
+        $produto->preco = $request->preco;
+        $produto->save();
+
     }
 
     /**
@@ -46,7 +73,6 @@ class UsuarioController extends Controller
      */
     public function show(Usuario $usuario)
     {
-        //
     }
 
     /**
@@ -80,6 +106,6 @@ class UsuarioController extends Controller
      */
     public function destroy(Usuario $usuario)
     {
-        //
+        
     }
 }

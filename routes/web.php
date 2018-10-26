@@ -10,19 +10,25 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-
-Route::get('/', 'HomeController@index')->name('home');
+//index
+Route::get('/', 'HomeController@index')->name('index');
 
 Auth::routes();
+//usuario
+Route::get('/usuario', 'UsuarioController@index')->name('usuario');
+Route::get('/usuario/search', 'UsuarioController@search')->name('pesquisar');
+Route::post('/usuario/sugestao', 'UsuarioController@enviar_sugestao')->name('sugestao');
+//admin
+Route::get('/admin', 'AdminController@index')->name('admin');
+Route::get('/notificacoes', 'NotificacoesController@notificacoes')->name('notificacoes');
 
-Route::get('/home', 'AdminController@index')->name('home');
+
 
 Route::get('/admin/categorias', 'CategoriaController@index')->name('categoria_index');;
 Route::get('/admin/categorias/create', 'CategoriaController@create')->name('categoria_create');;
 Route::post('/admin/categorias/store', 'CategoriaController@store')->name('categoria_store');
 Route::get('/admin/categorias/edit/{id}', 'CategoriaController@edit')->name('categoria_edit');
 Route::post('/admin/categorias/update', 'CategoriaController@update')->name('categoria_update');
-
 
 Route::get('/admin/subcategorias', 'SubcategoriaController@index')->name('subcategoria_index');;
 Route::get('/admin/subcategorias/create', 'SubcategoriaController@create')->name('subcategoria_create');;
