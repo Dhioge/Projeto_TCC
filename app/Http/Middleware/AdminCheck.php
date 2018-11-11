@@ -17,8 +17,14 @@ class AdminCheck
     {
       if (Auth::check() && Auth::user()->role == 'usuario') {
           return redirect('/usuario');   
+      }elseif(!Auth::check()){
+      
+        return redirect('/login');   
+        
       }else{
+
       return $next($request);
+      
       }
     }
 }

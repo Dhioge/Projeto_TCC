@@ -3226,6 +3226,10 @@ table th[class*="col-"] {
 }
 
 @media screen and (max-width: 767px) {
+
+  body{
+    background: #343a40;
+  }
   .table-responsive {
     width: 100%;
     margin-bottom: 16.5px;
@@ -5298,6 +5302,10 @@ tbody.collapse.in {
 }
 
 @media (min-width: 768px) {
+
+  body{
+    background: #343a40;
+  }
   .navbar-header {
     float: left;
   }

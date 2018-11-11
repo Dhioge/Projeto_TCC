@@ -1,6 +1,6 @@
 @extends ('admin.layouts.dashboard')
 
-@section('page_heading','Cadastrar Produto')
+@section('page_heading','Editar Produto')
 
 @section('section')
 
@@ -40,14 +40,23 @@
                     </div>
                     <div class="form-group">
                             <label for="ex">Imagem</label>
-                            <input type="file" name="img" id="img" class="form-control"  required>
+                            <input type="file" name="img" id="img" class="form-control" accept="image/*">
                             <img src="{{ url("storage/Produtos/{$produto->img}") }}" alt="{{ $item->img }}" width="100" height="100">
                         </div>
                         <div class="form-group">
                     <div class="form-group">
                             <label for="ex">Descrição</label>
                     <input type="text" name="descricao" id="descricao" class="form-control" value="{{$produto->descricao }}" required>
+                    </div>
+                    <div class="form-group">
+                                <label for="ex">Desconto(%):</label>
+                                <input type="number" name="desconto" id="desconto" class="form-control" required min="1" max="100" value="{{ $produto->desconto }}">
                         </div>
+                            <div class="form-group">
+                        <div class="form-group">
+                                <label for="ex">Exibir como Promoção?</label>
+                                <input type="checkbox" name="promocao" value="1"  @if($produto->promocao == true) checked @else @endif>Sim
+                       </div>
                         <div class="form-group">
                                 <button type="submit" class="btn btn-default">Salvar</button>
                         </div>

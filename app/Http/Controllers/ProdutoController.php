@@ -10,6 +10,13 @@ use Illuminate\Http\Request;
 
 class ProdutoController extends Controller
 {
+
+    public function __construct()
+    {
+    $this->middleware('AdminCheck');
+    setlocale(LC_TIME, 'pt_BR', 'pt_BR.utf-8', 'pt_BR.utf-8', 'portuguese');
+    date_default_timezone_set('America/Sao_Paulo');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -54,6 +61,8 @@ class ProdutoController extends Controller
         $produto->img = $nome_img;
         $produto->descricao = $request->descricao;
         $produto->preco = $request->preco;
+        $produto->promocao = isset($request->promocao)? $request->promocao : 0 ;
+        $produto->desconto = $request->desconto;
         $produto->save();
         return redirect(route('produto_index'));    
 
@@ -132,13 +141,17 @@ class ProdutoController extends Controller
         $produto->nome = $request->nome;
         $produto->loja_id = $request->loja_id;
         $nameFile= "storage/Produtos/";
-        if(file_exists($nameFile.$produto->img)) {
+        if(file_exists($request->img)) {
             File::delete($nameFile.$produto->img);
+            $nome_img=$this->salvar_imagem($request,'Produtos');
+            $produto->img = $nome_img;
         }
-        $nome_img=$this->salvar_imagem($request,'Produtos');
-        $produto->img = $nome_img;
+        
+        
         $produto->subcategoria_id = $request->subcategoria_id;
         $produto->descricao = $request->descricao;
+        $produto->promocao = isset($request->promocao)? $request->promocao : false ;
+        $produto->desconto = $request->desconto;
         $produto->preco = $request->preco;
         $produto->update();
         return redirect(route('produto_index'));
@@ -150,8 +163,9 @@ class ProdutoController extends Controller
      * @param  \App\Produto  $produto
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Produto $produto)
+    public function destroy(Request $request)
     {
-        //
+        Produto::destroy($request->id_delete);
+        return redirect(route('produto_index'));
     }
 }

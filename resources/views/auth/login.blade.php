@@ -1,11 +1,11 @@
-@extends ('admin.layouts.app')
 @section ('body')
-<a href="{{ route('index') }}" class="btn btn-primary float-right">Voltar</a>
+@extends ('admin.layouts.app')
 <div class="container py-5">
     <div class="row">
         <div class="col-md-12">
             <div class="row">
                 <div class="col-md-6 mx-auto">
+                        <a href="{{ route('index') }}" class="btn btn-primary float-right"><i class="fa fa-arrow-left"></i> Voltar</a>
                 @component('admin.widgets.panel')
                     @slot ('panelTitle', 'Entrar')
                     @slot ('panelBody')

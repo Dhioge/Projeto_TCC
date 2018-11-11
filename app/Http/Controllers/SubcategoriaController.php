@@ -8,6 +8,13 @@ use Illuminate\Http\Request;
 
 class SubcategoriaController extends Controller
 {
+
+    public function __construct()
+    {
+    $this->middleware('AdminCheck');
+    setlocale(LC_TIME, 'pt_BR', 'pt_BR.utf-8', 'pt_BR.utf-8', 'portuguese');
+    date_default_timezone_set('America/Sao_Paulo');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -94,8 +101,9 @@ class SubcategoriaController extends Controller
      * @param  \App\Subcategoria  $subcategoria
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Subcategoria $subcategoria)
+    public function destroy(Request $request)
     {
-        //
+        Subcategoria::destroy($request->id_delete);
+        return redirect(route('subcategoria_index'));
     }
 }

@@ -4,6 +4,7 @@
 
 @section('section')
 
+<a href="{{ route('produto_create') }}" class="btn btn-success">Adicionar</a>
 <div class="card mb-3">
         <div class="card-header">
           <i class="fa fa-table"></i> Produtos</div>
@@ -14,30 +15,34 @@
               <strong>{{ $mensagens }}</strong>
               </span>
               @endif
-              <a href="{{ route('produto_create') }}" class="btn btn-success">Adicionar</a>
             <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
               <thead>
                 <tr>
                   <th>Nome</th>
                   <th>Imagem</th>
                   <th>Preço</th>
+                  <th>Desconto</th>
+                  <th>Promoção</th>
                   <th>Descrição</th>
                   <th>Ação</th>
                 </tr>
               </thead>
-              <tfoot>
-                <tr>
-                  <th></th>
-              </tfoot>
               <tbody>
 
                 @foreach ($produtos as $item)
                 <tr>
                 <td>{{ $item->nome }}</td>
-                <td>   <img src="{{ url("storage/Produtos/{$item->img}") }}" alt="{{ $item->img }}" width="100" height="100">
-                  <td>{{ $item->preco }}</td>
+                <td>   <img src="{{ url("storage/Produtos/{$item->img}") }}" alt="{{ $item->img }}" width="100" height="100"></td>
+                  <td>R$ :{{ $item->preco }}</td>
+                  <td>{{ $item->desconto }}%</td>
+                  <td> @if ($item->promocao==true)Sim @else Não @endif</td>
                   <td>{{ $item->descricao }}</td>
-                  <td><a href="{{ url('/admin/produtos/edit/'.$item->id)}}" class="btn btn-info">Editar</a><a href="" class="btn btn-danger">Excluir</a></td>
+                  <td>
+<a href="{{ url('/admin/produtos/edit/'.$item->id)}}" class="btn btn-info"><i class="fa fa-edit"></i></a>
+<a class="btn btn-danger excluir-btn"  style="margin-left:5px;color:white" data-toggle="modal" data-target="#modal_excluir" alt="Excluir" onclick="atribuir_informacoes({{ $item->id }})" name="produtos">
+<i class="fa fa-trash"></i>
+</a>
+                  </td>
                   
                 </td>
                </tr>

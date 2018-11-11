@@ -20,6 +20,8 @@ class CreateProdutosTable extends Migration
             $table->integer('loja_id')->unsigned();
             $table->foreign('loja_id')->references('id')->on('lojas')->onDelete('cascade');;
             $table->string('nome');
+            $table->boolean('promocao');
+            $table->integer('desconto');
             $table->string('img');
             $table->string('descricao');
             $table->float('preco', 15, 2);

@@ -17,6 +17,9 @@ class UserCheck
     {
         if (Auth::check() && Auth::user()->role == 'admin') {
             return redirect('/admin');   
+        }elseif(!Auth::check()){
+            return redirect('/login');   
+        
         }else{
         return $next($request);
         }

@@ -1,4 +1,4 @@
-<div class="modal fade" id="atualizar_produto" tabindex="4" style="z-index:100000" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="atualizar_produto" tabindex="1" style="z-index:10000" role="dialog" aria-labelledby="exampleModalLabel2" aria-hidden="true">
         <div class="modal-dialog" role="document">
           <div class="modal-content">
             <div class="modal-header">

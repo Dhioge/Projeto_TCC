@@ -7,6 +7,13 @@ use Illuminate\Http\Request;
 
 class LojaController extends Controller
 {
+    
+    public function __construct()
+    {
+    $this->middleware('AdminCheck');
+    setlocale(LC_TIME, 'pt_BR', 'pt_BR.utf-8', 'pt_BR.utf-8', 'portuguese');
+    date_default_timezone_set('America/Sao_Paulo');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -92,8 +99,9 @@ class LojaController extends Controller
      * @param  \App\Loja  $loja
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Loja $loja)
+    public function destroy(Request $request)
     {
-        //
+        Loja::destroy($request->id_delete);
+        return redirect(route('loja_index'));
     }
 }

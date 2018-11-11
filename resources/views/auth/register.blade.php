@@ -1,13 +1,13 @@
 @extends ('admin.layouts.app')
 @section ('body')
 <div class="container">
-        <a href="{{ route('login') }}" class="btn btn-primary float-right">Voltar</a> 
     <div class="row" style="margin-top: 100px;">
-        <div class="col-md-6 col-md-offset-3">
-            @component('admin.widgets.panel')
+            <div class="col-md-6 col-md-offset-3">
+                <a href="{{ route('login') }}" class="btn btn-primary float-right"><i class="fa fa-arrow-left"></i> Voltar</a> 
+                @component('admin.widgets.panel')
                 @slot ('panelTitle', 'Cadastre-se')
                 @slot ('panelBody')
-                    <form method="POST" action="{{ route('register') }}">
+                <form method="POST" action="{{ route('register') }}">
                         @csrf
                         <div class="form-group row">
                             <label for="name" class="col-md-4 col-form-label text-md-right">Nome</label>

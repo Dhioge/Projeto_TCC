@@ -39,15 +39,23 @@
                     <div class="form-group">
                             <label for="ex">Imagem</label>
                             <input type="file" name="img" id="img" class="form-control" required>
-                        </div>
+                    </div>
                         <div class="form-group">
                     <div class="form-group">
-                            <label for="ex">Descrição</label>
+                            <label for="ex">Descrição:</label>
                             <input type="text" name="descricao" id="descricao" class="form-control" required>
                         </div>
+                    <div class="form-group">
+                            <label for="ex">Desconto(%):</label>
+                            <input type="number" name="desconto" id="desconto" class="form-control" required min="1" max="100" value="0">
+                    </div>
                         <div class="form-group">
-                                <button type="submit" class="btn btn-default">Salvar</button>
-                        </div>
+                    <div class="form-group">
+                            <label for="ex">Exibir como Promoção?</label>
+                            <input type="checkbox" name="promocao" value="1">Sim</div>
+                        <div class="form-group">
+                             <button type="submit" class="btn btn-default">Salvar</button>
+                    </div>
                 </form>
               </div>
             </div>

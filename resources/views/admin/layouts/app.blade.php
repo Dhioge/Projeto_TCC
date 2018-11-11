@@ -7,12 +7,17 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <title>{{ config('app.name', 'Projeto') }}</title>
-   
+    <link rel="stylesheet" href="{{ asset('/css') }}/animate.css">
+	<!-- Icomoon Icon Fonts-->
+	<link rel="stylesheet" href="{{ asset('/css') }}/icomoon.css">
+	<!-- Ion Icon Fonts-->
+	<link rel="stylesheet" href="{{ asset('/css') }}/ionicons.min.css">
+
     <link rel="stylesheet" href="{{ asset('/css/') }}/bootstrap.min.css" > <!-- Custom fonts for this template-->
     <link href="{{ asset('/vendor/') }}/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css"> <!-- latest 5.0.13 june 2018, needs update -->
     <!-- Custom styles for this template-->
     <link href="{{ asset('/css/') }}/sb-admin.css" rel="stylesheet">
-
+    
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
     <link rel="stylesheet" href="{{ asset('css/admin.css') }}">
     <link rel="stylesheet" href="{{ asset('css/timeline.css') }}">
@@ -62,5 +67,6 @@
 <script src="{{ asset("js/Chart.js") }}"></script>
 <script src="{{ asset("js/admin.js") }}"></script>
 @yield('script')
+@yield('script_excluir')
 </body>
 </html>

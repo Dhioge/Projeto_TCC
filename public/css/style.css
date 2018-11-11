@@ -4,6 +4,51 @@
  * Copyright 2011-2018 Twitter, Inc.
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  */
+
+
+/* Important part */
+.especificacoes{
+  display: table;
+  border:1px solid;
+  font: white
+}
+.especificacoes:hover{
+  font: black;
+  font-size: 16px
+}
+.especificacoes-img:hover{
+  opacity: 0.7;
+}
+.modal-dialog{
+  overflow-y: initial !important
+}
+.modal-body{
+  height: 400px;
+  overflow-y: auto;
+}
+ .user-comentario{
+   border-right: 1px solid;
+   border-bottom: 1px solid;
+   overflow: auto
+ }
+ .dropdown-toggle{
+   width: max-content
+ }
+ .dropdown-toggle:hover{
+  background: #ccc
+ }
+ .dropdown:hover>.dropdown-menu {
+  
+  display: block;
+  margin-top: -5px;
+}
+ .dropdown:hover>.dropdown-menu>.dropdown-item:hover {
+  background: #ccc
+}
+.dropdown>.dropdown-toggle:active {
+  /*Without this, clicking will make it sticky*/
+    pointer-events: none;
+}
 :root {
   --blue: #007bff;
   --indigo: #6610f2;
@@ -7422,8 +7467,9 @@ h1, h2, h3, h4, h5,
   .colorlib-nav ul li {
     padding: 0;
     margin: 0;
+    width: max-content;
     list-style: none;
-    display: inline;
+    display: inline-block;
     font-weight: 400;
     font-family: "Rokkitt", Georgia, serif;
     text-transform: uppercase;

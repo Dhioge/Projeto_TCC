@@ -19,6 +19,7 @@ class CreateComentariosTable extends Migration
             $table->integer('produto_id')->unsigned();
             $table->foreign('usuario_id')->references('id')->on('usuarios')->onDelete('cascade');;
             $table->foreign('produto_id')->references('id')->on('produtos')->onDelete('cascade');;
+            $table->mediumText('comentario');
             $table->timestamps();
         });
     }

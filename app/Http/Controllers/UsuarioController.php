@@ -18,7 +18,7 @@ class UsuarioController extends Controller
      */
 
     public function __construct(){
-        $this->middleware('UserCheck');
+    $this->middleware('UserCheck');
     setlocale(LC_TIME, 'pt_BR', 'pt_BR.utf-8', 'pt_BR.utf-8', 'portuguese');
     date_default_timezone_set('America/Sao_Paulo');
     }
@@ -33,7 +33,7 @@ class UsuarioController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function search(Request $request)
+    public function json_produtos_datatable(Request $request)
     {
         return datatables()->of(Produto::all())->toJson();
 
@@ -47,10 +47,9 @@ class UsuarioController extends Controller
      */
     public function enviar_sugestao(Request $request)
     {
-
         $notificacao = new Notificacoes;
         $notificacao->usuario_id = $request->usuario_id;
-        $notificacao->tipo = 'alteracao_produto';
+        $notificacao->tipo = 'atualizar_produto';
         $notificacao->titulo = 'Sugestão de Atualização';
         $notificacao->texto = 'Alteração do Produto '.$request->nome;
         $notificacao->destinatario = 'admin';

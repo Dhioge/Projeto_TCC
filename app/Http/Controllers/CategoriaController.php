@@ -7,6 +7,13 @@ use Illuminate\Http\Request;
 
 class CategoriaController extends Controller
 {
+
+    public function __construct()
+    {
+    $this->middleware('AdminCheck');
+    setlocale(LC_TIME, 'pt_BR', 'pt_BR.utf-8', 'pt_BR.utf-8', 'portuguese');
+    date_default_timezone_set('America/Sao_Paulo');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -87,9 +94,9 @@ class CategoriaController extends Controller
      * @param  \App\Categoria  $categoria
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Categoria $categoria)
+    public function destroy(Request $request)
     {
-        
-        $categoria = Categoria::find($request->id);
+        Categoria::destroy($request->id_delete);
+        return redirect(route('categoria_index'));
     }
 }

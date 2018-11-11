@@ -1,6 +1,6 @@
 @extends ('admin.layouts.dashboard')
 
-@section('page_heading','Cadastrar Categoria')
+@section('page_heading','Editar Categoria')
 
 @section('section')
 
