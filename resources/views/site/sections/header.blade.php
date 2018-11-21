@@ -1,6 +1,9 @@
 <nav class="colorlib-nav" role="navigation">
     <div class="top-menu">
         <div class="container">
+                <a class="navbar-brand" href="#">
+                        <img src="{{ asset('/images/') }}/logo-pesca-preco.jpg" alt="" width="300" height="100"> 
+                      </a>
             <div class="row">
                 <div class="col-sm-7 col-md-9">
                     <div id="colorlib-logo"><a href="index.html"></a></div>
