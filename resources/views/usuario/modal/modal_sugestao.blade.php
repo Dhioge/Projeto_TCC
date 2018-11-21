@@ -7,6 +7,9 @@
                   <span aria-hidden="true">&times;</span>
                 </button>
               </div>
+
+
+
             <div class="container-fluid">
             <span class="produtos-sujestao">
                 <div class="table-responsive">
@@ -24,8 +27,7 @@
                           <tbody>
                             
         </span>
-            </div>
-        </div>
-      </div>
+       </div>
     </div>
+</div>
      

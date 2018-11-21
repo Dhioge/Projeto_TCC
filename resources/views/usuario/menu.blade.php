@@ -19,21 +19,30 @@
                         <li><a href="" data-toggle="modal" data-target="#sujestao" class="btnsujestao">
                                 <i class="fa fa-plus-square"></i>Adicionar Sugestões</a>
                         </li>
-                        <li class="cart"><a href="" data-toggle="modal" data-target="#carrinho"><i class="icon-shopping-cart"></i> Carrinho [0]</a></li>
                     </ul>
                 </div>
             </div>
+            <h3>Sugestões:</h3>
+            @foreach ($notificacao as $valor)
+            <p class="notificacoes">Solicitação de {{ $valor->texto }}</p>
+            @endforeach
         </div>
+    
     </div>
-    @component('usuario.modal.modal_carrinho')
-    @endcomponent
+    @if (session('msg'))
+    <div class="alert alert-success">
+        {{ session('msg') }}
+    </div>
+    @endif
     @component('usuario.modal.modal_logout')
     @endcomponent
     @component('usuario.modal.modal_send')
     @endcomponent
     @component('usuario.modal.modal_sugestao')
     @endcomponent
+    
 </nav>
+
 @section('script')
 @component('usuario.ajax.ajax_datatable_sujestao')
 @endcomponent

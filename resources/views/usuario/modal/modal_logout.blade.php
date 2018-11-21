@@ -14,7 +14,11 @@
             <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancelar</button>
             <button class="btn btn-primary" href="{{ route('logout') }}">Sair</button>
           </form>
-          </div>
-      </div>
+         </div>
+      
+      
+      
+      
+       </div>
     </div>
   </div>

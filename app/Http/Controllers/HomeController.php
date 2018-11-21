@@ -25,24 +25,62 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $produtos = Produto::paginate(5);
+        $produtos = Produto::where('promocao',true)->get();
         return view('site.index',["produtos" => $produtos]);
     }
-    public function shop($subcategoria_id=0)
+    public function shop(Request $request)
     {
-        $slider_produto = Produto::paginate(5);
-        if($subcategoria_id == 0){
-            $produtos = Produto::where('promocao',1)->paginate(15);
-        }else{
-            $produtos = Produto::where('subcategoria_id',$subcategoria_id)->paginate(15);
-        }
 
-        $categoria = Categoria::all();
-        $subcategoria = Subcategoria::all();
-        return view('site.shop',["produtos" => $produtos,'categoria'=>$categoria,'subcategoria'=>$subcategoria,'slider_produto'=>$slider_produto]);
+        if(!$request->pesquisar){
+        if(empty($request->subcategoria)){
+            $produtos = Produto::where('promocao',1)->paginate(15);
+            if(!empty($request)){
+                if ($request->order_by==1) {
+                    return $produtos = Produto::where('promocao',1)->orderBy('id', 'DESC')->paginate(15);
+                }
+                else if($request->order_by==2) {
+                    return $produtos = Produto::where('promocao',1)->orderBy('id', 'ASC')->paginate(15);
+                }
+            }
+        }else{
+            
+            $produtos = Produto::where('subcategoria_id',$request->subcategoria)->paginate(20);
+            if(!empty($request)){
+                if ($request->order_by==1) {
+                    $produtos = Produto::where('subcategoria_id',$request->subcategoria)->orderBy('id', 'DESC')->paginate(20);
+                }
+                else if($request->order_by==2) {
+                    $produtos = Produto::where('subcategoria_id',$request->subcategoria)->orderBy('id', 'ASC')->paginate(20);
+                }
+                
+            }
+            
+        }
+        $ordenar= true;
     }
-    public function produto_json($id){
-        
+    else
+    {
+       $produtos = $this->pesquisar($request);
+       $ordenar = false;
+    }
+      $slider_produto = Produto::paginate(5);
+      $categoria = Categoria::all();
+      $subcategoria = Subcategoria::all();
+      
+      return view('site.shop',["produtos" => $produtos,'categoria'=>$categoria,'subcategoria'=>$subcategoria,'slider_produto'=>$slider_produto,'ordenar'=>$ordenar]);
+    
+    }
+
+
+
+    public function pesquisar(Request $request){
+        $produtos = Produto::Where('nome', 'like', '%' . $request->pesquisar . '%')->paginate(20);
+        return $produtos;
+    }
+
+
+    public function especificacoes_produtos_json($id)
+    {
         $produt = Produto::where('id',$id)->first();
         $produto['nome'] = $produt->nome;
         $produto['img'] = $produt->img;
@@ -51,21 +89,7 @@ class HomeController extends Controller
         return $produto;
 
     }
-    public function enviar_comentario(Request $request)
-    {
-        $comentario = new Comentario;
-        $comentario->usuario_id = $request->usuario_id;
-        $comentario->comentario = $request->comentario;
-        $comentario->produto_id = $request->produto_id;
-        $comentario->save();
+  
 
-    }
-    public function comentario_json($id){
-        
-        $comentario = Comentario::orderBy('comentarios.created_at', 'asc')->select('usuarios.name','usuarios.email','comentarios.*')->join('usuarios','usuarios.id','=','comentarios.usuario_id') ->get();
-        
-        return $comentario;
-
-    }
  
 }

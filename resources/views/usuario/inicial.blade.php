@@ -1,8 +1,12 @@
 @extends('layouts.LayoutSite')
 @section('header')
-    @component('usuario.menu')
-    @endcomponent
-@endsection  
+@component('usuario.menu',['notificacao'=>$notificacao])
+@endcomponent
+
+@endsection
+
+
+
 
 
         

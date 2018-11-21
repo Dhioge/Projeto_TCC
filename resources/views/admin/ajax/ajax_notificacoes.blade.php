@@ -1,5 +1,5 @@
 <script type="text/javascript">
-    //funcao para inserir as notificacoes inserido em admin/nav.blade.php
+    //funcao para inserir as notificacoes, incluido em admin/nav.blade.php
     function notificacoes(){                
     $.getJSON( "http://127.0.0.1:8000/notificacoes", function( data ) {
       $.each( data, function( key, val ) {
@@ -13,11 +13,13 @@
             modal = 'mensagem'
         }
         
-        items.push('<span class="text-success"><strong><i class="fa fa-long-arrow-up fa-fw"></i></strong></span><span class="small float-right text-muted"></span><div class="dropdown-message large">'+val['titulo']+'</div></a>' );
+        items.push('<a href="'+'/alterar_produto/'+val['id']+'" class="list-group-item">'
+                                +'<i class="fa fa-tasks fa-fw"></i>'+ val['titulo']
+                                +'<span class="pull-right text-muted small"><em>'+val['created_at']+'</em></span>'
+                            +'</a>');
         $( "<a/>", {
         "class": "dropdown-item",
-        "data-toggle" :"modal",
-        "href" :"",
+        "href" : "",
         "data-target" : "#"+modal,
         html: items.join( "" )
         }).appendTo( ".drop-itens");

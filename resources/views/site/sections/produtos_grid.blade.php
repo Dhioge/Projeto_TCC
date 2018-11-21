@@ -1,8 +1,29 @@
 <div class="colorlib-product" >
     <div class="container">
-
-           
+        @if ($ordenar==true)
+    
+<div class="dropdown float-right">
+    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        organizar por:
+    </button>
+    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+        <form action="{{ route('shop') }}" method="post">
+                @csrf
+                <input type="hidden" name="order" value="1">
+                <button class="dropdown-item">Menor Preço</a>
+                </form>
+                <form action="{{ route('shop') }}" method="post">
+                        @csrf
+                    <input type="hidden" name="order" value="2">
+                    <button class="dropdown-item">Maior Preço</a>
+                    </form>
+                    
+                </div>
+            </div> 
+            
+            @endif
         <div class="row">
+            
                 @component('site.modal.modal_ver_produto')
                 @endcomponent
                 
@@ -12,7 +33,7 @@
                 
         </div>
         <div class="row row-pb-md" >
-           
+                    
             @foreach ($produtos as $produto)
             <div class="col-lg-3 mb-4 text-center"  >
                 <div class="product-entry border"  style="padding: 15px;">

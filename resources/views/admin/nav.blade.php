@@ -1,10 +1,10 @@
 <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top" style="margin-bottom:0px" id="mainNav">
-    <a class="navbar-brand" href="{{ url('/admin') }}">Projeto</a>
     <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarResponsive">
         <ul class="navbar-nav navbar-sidenav" id="exampleAccordion">
+                <a class="navbar-brand" href="http://127.0.0.1:8000/admin">Projeto</a>
             <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Dashboard">
                 <a class="nav-link" href="{{ url('/admin') }}">
                     <i class="fa fa-fw fa-dashboard"></i>

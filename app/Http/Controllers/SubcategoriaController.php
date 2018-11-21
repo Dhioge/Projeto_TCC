@@ -50,7 +50,7 @@ class SubcategoriaController extends Controller
         $subcategoria->nome = $request->nome;
         $subcategoria->categoria_id = $request->categoria_id;
         $subcategoria->save();
-        return redirect(route('subcategoria_index'));
+        return redirect(route('subcategoria_index'))->with('msg', 'Subcategoria cadastrada com sucesso!');
     }
 
     /**
@@ -92,7 +92,7 @@ class SubcategoriaController extends Controller
         $subcategoria->categoria_id = $request->categoria_id;
         $subcategoria->nome = $request->nome;
         $subcategoria->save();
-        return redirect(route('subcategoria_index'));  
+        return redirect(route('subcategoria_index'))->with('msg', 'Subcategoria Editada com sucesso!');;  
     }
 
     /**

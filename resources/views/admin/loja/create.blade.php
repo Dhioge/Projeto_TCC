@@ -6,7 +6,7 @@
 
         <div class="row">
             <div class="col-lg-12">
-                <form role="form" method="POST" action="{{ route('loja_store') }}">
+                <form role="form" method="POST" action="{{ route('loja_store') }}" enctype="multipart/form-data">
                         @csrf
                     <div class="form-group">
                         <label for="ex">Nome</label>
@@ -17,8 +17,8 @@
                         <input name="site" id="site" class="form-control">
                     </div>
                     <div class="form-group">
-                        <label for="ex">Slogan</label>
-                        <input name="slug" id="slug" class="form-control">
+                            <label for="ex">Slogan</label>
+                            <input type="file" name="slug" id="slug" class="form-control" required>
                     </div>
                     <button type="submit" class="btn btn-default">Salvar</button>
                 </form>

@@ -47,7 +47,7 @@ class CategoriaController extends Controller
         $categoria = new Categoria;
         $categoria->nome = $request->nome;
         $categoria->save();
-        return redirect(route('categoria_index'));    
+        return redirect(route('categoria_index'))->with('msg', 'Categoria cadastrada com sucesso!');;    
     }
 
     /**
@@ -85,7 +85,7 @@ class CategoriaController extends Controller
         $categoria = Categoria::find($request->id);
         $categoria->nome = $request->nome;
         $categoria->update();
-        return redirect(route('categoria_index'));
+        return redirect(route('categoria_index'))->with('msg', 'Categoria atualizada com sucesso!');;
     }
 
     /**
@@ -97,6 +97,6 @@ class CategoriaController extends Controller
     public function destroy(Request $request)
     {
         Categoria::destroy($request->id_delete);
-        return redirect(route('categoria_index'));
+        return redirect(route('categoria_index'))->with('msg', 'Categoria excluida com sucesso!');;
     }
 }

@@ -22,20 +22,18 @@
                           <label for="ex">Preço</label>
                           <input name="preco" id="preco" class="form-control" value="" required>
                       </div>
-                          <div class="form-group">
                       <div class="form-group">
-                              <label for="ex">Descrição</label>
-                      <input type="text" name="descricao" id="descricao" class="form-control" value="" required>
-                          </div>
-                          <div class="form-group">
+                            <label for="ex">Descrição</label>
+                            <input type="text" name="descricao" id="descricao" class="form-control" value="" required>
+                      </div>
+                      <div class="form-group">
                                   <button type="submit" class="btn btn-default">Enviar</button>
-                          </div>
+                      </div>
                   </form>
-                </div>
-              </div>
+             </div>
           </div>
        </div>
 
-  </div>
+</div>
 </div>
 </div>

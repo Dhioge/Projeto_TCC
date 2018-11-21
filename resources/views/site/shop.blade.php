@@ -5,7 +5,7 @@
 @endsection  
 
 @section('shop')
-@component('site.sections.produtos_grid',['produtos'=>$produtos])
+@component('site.sections.produtos_grid',['produtos'=>$produtos,'ordenar'=>$ordenar])
 @endcomponent
 
 @endsection     

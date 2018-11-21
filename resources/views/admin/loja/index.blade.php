@@ -10,10 +10,10 @@
           <i class="fa fa-table"></i> Lojas</div>
         <div class="card-body">
           <div class="table-responsive">
-              @if (isset($mensagens))
-              <span class="help-block">
-              <strong>{{ $mensagens }}</strong>
-              </span>
+              @if (session('msg'))
+              <div class="alert alert-success">
+                  {{ session('msg') }}
+              </div>
               @endif
             <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
               <thead>
@@ -34,8 +34,8 @@
                 <tr>
                 <td>{{ $item->nome }}</td>
                 <td>{{ $item->site }}</td>
-                <td>{{ $item->slug }}</td>
-                <td>
+                <td>   <img src="{{ url("storage/Lojas/{$item->slug}") }}" alt="{{ $item->img }}" width="100" height="100"></td>
+                   <td>
                     <a href="{{ url('/admin/lojas/edit/'.$item->id)}}" class="btn btn-info"><i class="fa fa-edit"></i></a>
                     <a class="btn btn-danger excluir-btn" style="margin-left:5px;color:white" data-toggle="modal" data-target="#modal_excluir" alt="Excluir" onclick="atribuir_informacoes({{ $item->id }})" name="lojas">
                     <i class="fa fa-trash"></i>

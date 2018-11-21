@@ -10,10 +10,10 @@
           <i class="fa fa-table"></i> Produtos</div>
         <div class="card-body">
           <div class="table-responsive">
-              @if (isset($mensagens))
-              <span class="help-block">
-              <strong>{{ $mensagens }}</strong>
-              </span>
+              @if (session('msg'))
+              <div class="alert alert-success">
+                  {{ session('msg') }}
+              </div>
               @endif
             <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
               <thead>

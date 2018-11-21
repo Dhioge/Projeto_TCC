@@ -53,23 +53,20 @@
         <div class="row">
             <div class="col-sm-12 text-left menu-1">
                 <ul>
-                    <li class="nav-link active"><a href="index.html">INICIO</a></li>
+                    <li class="nav-link active"><a href="{{ route('index') }}">INICIO</a></li>
                     <li><a href="{{ route('shop') }}">LOJA</a></li>
                     <li><a href="contact.html">CONTATO</a></li>
                 </li>    
                 </ul>
                 </div>
             </div>
-            @component('usuario.modal.modal_carrinho')
+            <hr>
+            
+            @if (isset($categoria) && isset($subcategoria))
+            
+            @component('site.sections.header_shop',['categoria'=>$categoria,'subcategoria'=>$subcategoria])
             @endcomponent
-
-@if (isset($categoria) && isset($subcategoria))
-    
-@component('site.sections.header_shop',['categoria'=>$categoria,'subcategoria'=>$subcategoria])
-@endcomponent
-@endif
-        
-        </div>
-    </div>
+            @endif
+         
 
 </nav>

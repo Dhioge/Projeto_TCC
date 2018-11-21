@@ -6,10 +6,14 @@ use App\Usuario;
 use App\ProdutoAlteracoes;
 use App\Notificacoes;
 use DataTables;
+use Auth;
 use Illuminate\Http\Request;
 
 class UsuarioController extends Controller
 {
+    
+    
+    
     /**
      * Display a listing of the resource.
      *
@@ -18,6 +22,7 @@ class UsuarioController extends Controller
      */
 
     public function __construct(){
+    
     $this->middleware('UserCheck');
     setlocale(LC_TIME, 'pt_BR', 'pt_BR.utf-8', 'pt_BR.utf-8', 'portuguese');
     date_default_timezone_set('America/Sao_Paulo');
@@ -25,7 +30,8 @@ class UsuarioController extends Controller
     
     public function index()
     {
-        return view('usuario.inicial');
+        $notificacao = Notificacoes::where('usuario_id',Auth::user()->id)->get();
+        return view('usuario.inicial',['notificacao'=>$notificacao]);
     }
 
     /**
@@ -61,7 +67,7 @@ class UsuarioController extends Controller
         $produto->descricao = $request->descricao;
         $produto->preco = $request->preco;
         $produto->save();
-
+        return redirect('usuario')->with('msg', 'Sugestão enviada com sucesso!');
     }
 
     /**

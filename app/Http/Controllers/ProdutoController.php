@@ -64,42 +64,12 @@ class ProdutoController extends Controller
         $produto->promocao = isset($request->promocao)? $request->promocao : 0 ;
         $produto->desconto = $request->desconto;
         $produto->save();
-        return redirect(route('produto_index'));    
+        return redirect(route('produto_index'))->with('msg', 'Produto cadastrado com sucesso!');;    
 
     }
 
 
-    public function salvar_imagem(Request $request,$diretorio)
-    {
-    // Define o valor default para a variável que contém o nome da imagem 
-    $nameFile = null;
- 
-    // Verifica se informou o arquivo e se é válido
-    if ($request->hasFile('img') && $request->file('img')->isValid()) {
-         
-        // Define um aleatório para o arquivo baseado no timestamps atual
-        $name = uniqid(date('HisYmd'));
- 
-        // Recupera a extensão do arquivo
-        $extension = $request->img->extension();
- 
-        // Define finalmente o nome
-        $nameFile = "{$name}.{$extension}";
- 
-        // Faz o upload:
-        $upload = $request->img->storeAs($diretorio, $nameFile);
-        // Se tiver funcionado o arquivo foi armazenado em storage/app/public/categories/nomedinamicoarquivo.extensao
- 
-        // Verifica se NÃO deu certo o upload (Redireciona de volta)
-        if ( !$upload ){
-            return 'error';
- 
-        }else{
-            return $nameFile;
-        }
-        
-        }
-    }
+    
     /**
      * Display the specified resource.
      *
@@ -154,7 +124,7 @@ class ProdutoController extends Controller
         $produto->desconto = $request->desconto;
         $produto->preco = $request->preco;
         $produto->update();
-        return redirect(route('produto_index'));
+        return redirect(route('produto_index'))->with('msg', 'Produto atualizado com sucesso!');;
     }
 
     /**
@@ -166,6 +136,37 @@ class ProdutoController extends Controller
     public function destroy(Request $request)
     {
         Produto::destroy($request->id_delete);
-        return redirect(route('produto_index'));
+        return redirect(route('produto_index'))->with('msg', 'Produto excluido com sucesso!');
+    }
+    public function salvar_imagem(Request $request,$diretorio)
+    {
+    // Define o valor default para a variável que contém o nome da imagem 
+    $nameFile = null;
+ 
+    // Verifica se informou o arquivo e se é válido
+    if ($request->hasFile('img') && $request->file('img')->isValid()) {
+         
+        // Define um aleatório para o arquivo baseado no timestamps atual
+        $name = uniqid(date('HisYmd'));
+ 
+        // Recupera a extensão do arquivo
+        $extension = $request->img->extension();
+ 
+        // Define finalmente o nome
+        $nameFile = "{$name}.{$extension}";
+ 
+        // Faz o upload:
+        $upload = $request->img->storeAs($diretorio, $nameFile);
+        // Se tiver funcionado o arquivo foi armazenado em storage/app/public/categories/nomedinamicoarquivo.extensao
+ 
+        // Verifica se NÃO deu certo o upload (Redireciona de volta)
+        if ( !$upload ){
+            return 'error';
+ 
+        }else{
+            return $nameFile;
+        }
+        
+        }
     }
 }

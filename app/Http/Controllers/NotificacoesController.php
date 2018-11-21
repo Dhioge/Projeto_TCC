@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Notificacoes;
+use App\ProdutoAlteracoes;
+use App\Usuario;
+use App\Produto;
 use Illuminate\Http\Request;
 
 class NotificacoesController extends Controller
@@ -18,15 +21,25 @@ class NotificacoesController extends Controller
         $notificacao = Notificacoes::orderBy('created_at', 'desc')->take(7)->get();
         return $notificacao->toJson();
     }
+    public function alterar_produto($id){
+    $produto = ProdutoAlteracoes::where('notificacao_id',$id)->first();
+    $notificacao = Notificacoes::select('usuarios.name','usuarios.email','notificacoes.*')->join('usuarios','usuarios.id','=','notificacoes.usuario_id')->where('notificacoes.id',$id)->first();
+    return view('admin.alterar_produto.edit',compact('produto'),compact('notificacao'));
 
+    }
     /**
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function alterar_produto_update(Request $request)
     {
-        //
+        $produto = Produto::find($request->id);
+        $produto->nome = $request->nome;
+        $produto->descricao = $request->descricao;
+        $produto->preco = $request->preco;
+        $produto->update();
+        return redirect(route('produto_index'))->with('msg', 'Sugestão aceita com sucesso!');;
     }
 
     /**

@@ -18,6 +18,14 @@ class ComentarioController extends Controller
     date_default_timezone_set('America/Sao_Paulo');
     }
 
+
+
+    public function index($id){
+        
+        $comentario = Comentario::orderBy('comentarios.created_at', 'asc')->select('usuarios.name','usuarios.email','comentarios.*')->join('usuarios','usuarios.id','=','comentarios.usuario_id')->where('produto_id',$id)->get();
+        return $comentario;
+
+    }
     /**
      * Show the form for creating a new resource.
      *
@@ -36,7 +44,12 @@ class ComentarioController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $comentario = new Comentario;
+        $comentario->usuario_id = $request->usuario_id;
+        $comentario->comentario = $request->comentario;
+        $comentario->produto_id = $request->produto_id;
+        $comentario->save();
+
     }
 
     /**
