@@ -91,7 +91,9 @@
 	<script src="{{ asset("js/Chart.js") }}"></script>
 	<script>
 		$(document).ready(function(){
-
+			$(function () {
+  $('[data-toggle="tooltip"]').tooltip()
+})
 
 	$.ajaxSetup({
     headers: {

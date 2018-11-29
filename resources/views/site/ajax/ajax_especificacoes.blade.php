@@ -11,10 +11,13 @@
 
      //percorre o json e atribui os valores em uma variavel
      $.each( data, function( key, val ) {
-   produto='<h3>'+data.nome+'</h3>'+
+   produto = '<h3>'+data.nome+'</h3>'+
    '<img src="{{ url("storage/Produtos/") }}/'+data.img+'" width="100" height="100"></img>'+
    '<li class="list-group-item">Descrição: <p>'+data.descricao+'</p></li>'+
-   '<li class="list-group-item">Preço: <p>'+data.preco+'</p></li>';
+   '<li class="list-group-item">Preço: <p>'+data.preco+'</p></li><hr>'+
+   '<h3>'+data.loja_nome+'</h3>';
+   '<img src="{{ url("storage/Lojas/") }}/'+data.loja_img+'" width="50" height="50"></img>'+
+   '<a href="http://'+data.loja_site+'">Ir na loja</a>';
 });
 $('.produto-itens').append(produto)
    });

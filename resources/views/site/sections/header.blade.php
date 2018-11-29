@@ -60,14 +60,20 @@
                     <li><a href="{{ route('shop') }}">LOJA</a></li>
                     <li><a href="contact.html">CONTATO</a></li>
                 </li>    
-                </ul>
+                <form class="form-inline my-2 my-lg-0 float-right" method="post" action="{{  route('shop')}}">
+                        @csrf
+                        <input class="form-control mr-sm-2" type="search" placeholder="Pesquisar.." aria-label="Search" name="pesquisar">
+                        <button class="btn btn-outline-success my-2 my-sm-0" type="submit"><i class="fa fa-search"></i></button>
+                      </form>    
+            </ul>
+                
                 </div>
             </div>
             <hr>
             
             @if (isset($categoria) && isset($subcategoria))
             
-            @component('site.sections.header_shop',['categoria'=>$categoria,'subcategoria'=>$subcategoria])
+            @component('site.sections.header_shop',['categoria'=>$categoria,'subcategoria'=>$subcategoria,'ordenar'=>$ordenar,'subcategoria_id'=> $subcategoria_id])
             @endcomponent
             @endif
          

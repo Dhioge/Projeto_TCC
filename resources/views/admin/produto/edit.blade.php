@@ -6,7 +6,7 @@
 
         <div class="row">
             <div class="col-lg-12">
-                <form role="form" method="POST" action="{{ route('produto_update') }}" enctype="multipart/form-data">
+                <form role="form" method="POST" action="{{ route('produto_update') }}" enctype="multipart/form-data" class="form_produto">
                         @csrf
                         <input type="hidden" id="id" name="id" class="form-control" value="{{ $produto->id }}">
 
@@ -36,7 +36,7 @@
                     </div>
                     <div class="form-group">
                         <label for="ex">Preço</label>
-                        <input name="preco" id="preco" class="form-control" value="{{$produto->preco }}" required>
+                        <input name="preco" id="preco" class="form-control preco" value="{{$produto->preco }}" required>
                     </div>
                     <div class="form-group">
                             <label for="ex">Imagem</label>
@@ -50,7 +50,7 @@
                     </div>
                     <div class="form-group">
                                 <label for="ex">Desconto(%):</label>
-                                <input type="number" name="desconto" id="desconto" class="form-control" required min="1" max="100" value="{{ $produto->desconto }}">
+                                <input type="number" name="desconto" id="desconto" class="form-control" required min="0" max="100" value="{{ $produto->desconto }}">
                         </div>
                             <div class="form-group">
                         <div class="form-group">

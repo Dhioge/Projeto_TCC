@@ -1,8 +1,10 @@
+@if ($produtos)
+    
 <aside id="colorlib-hero">
     <div class="flexslider">
         <ul class="slides">
             @foreach ($produtos as $produto)
-
+            
             <li style="background-image: url('storage/Produtos/{{$produto->img }}');">
                 <div class="overlay"></div>
                 <div class="container-fluid">
@@ -22,7 +24,9 @@
                 </div>
             </li>
             @endforeach
-
-          </ul>
+            
+        </ul>
       </div>
-</aside>
+    </aside>
+
+    @endif

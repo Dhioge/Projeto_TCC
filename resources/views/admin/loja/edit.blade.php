@@ -16,7 +16,7 @@
                     </div>
                     <div class="form-group">
                         <label for="ex">Site</label>
-                        <input name="site" id="site" class="form-control" value="{{ $loja->site }}">
+                        <input name="site" id="site" class="form-control" value="{{ $loja->site }}" >
                     </div>
                     <div class="form-group">
                         <label for="ex">Slogan</label>

@@ -52,7 +52,7 @@ class ProdutoController extends Controller
      */
     public function store(Request $request)
     {
-
+     
         $produto = new Produto;
         $produto->nome = $request->nome;
         $produto->loja_id = $request->loja_id;

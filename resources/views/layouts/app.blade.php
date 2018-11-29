@@ -52,6 +52,7 @@
 <script src="{{ asset('/js/') }}/sb-admin-charts.js"></script>
 
 <script>
+ 
     $('#toggleNavPosition').click(function() {
         $('body').toggleClass('fixed-nav');
         $('nav').toggleClass('fixed-top static-top');

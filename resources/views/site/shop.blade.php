@@ -1,11 +1,11 @@
 @extends('layouts.LayoutSite')
 @section('header')
-    @component('site.sections.header',['categoria'=>$categoria,'subcategoria'=>$subcategoria])
+    @component('site.sections.header',['categoria'=>$categoria,'subcategoria'=>$subcategoria,'ordenar'=>$ordenar,'subcategoria_id'=>$subcategoria_id])
     @endcomponent
 @endsection  
 
 @section('shop')
-@component('site.sections.produtos_grid',['produtos'=>$produtos,'ordenar'=>$ordenar])
+@component('site.sections.produtos_grid',['produtos'=>$produtos])
 @endcomponent
 
 @endsection     

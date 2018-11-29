@@ -14,7 +14,7 @@
                     </div>
                     <div class="form-group">
                         <label for="ex">Site</label>
-                        <input name="site" id="site" class="form-control">
+                        <input name="site" id="site" class="form-control" placeholder="www.exemple.com">
                     </div>
                     <div class="form-group">
                             <label for="ex">Slogan</label>

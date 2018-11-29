@@ -33,7 +33,7 @@
                 <tr>
                 <td>{{ $item->nome }}</td>
                 <td>   <img src="{{ url("storage/Produtos/{$item->img}") }}" alt="{{ $item->img }}" width="100" height="100"></td>
-                  <td>R$ :{{ $item->preco }}</td>
+                  <td class="preco2">{{ $item->preco }}</td>
                   <td>{{ $item->desconto }}%</td>
                   <td> @if ($item->promocao==true)Sim @else Não @endif</td>
                   <td>{{ $item->descricao }}</td>
