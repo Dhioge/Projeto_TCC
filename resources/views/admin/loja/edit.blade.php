@@ -4,7 +4,6 @@
 
 @section('section')
 
-        <div class="row">
             <div class="col-lg-12">
                 <form role="form" method="POST" action="{{ route('loja_update') }}">
                         @csrf
@@ -22,7 +21,7 @@
                         <label for="ex">Slogan</label>
                         <input name="slug" id="slug" class="form-control" value="{{ $loja->slug }}">
                     </div>
-                    <button type="submit" class="btn btn-default">Salvar</button>
+                    <button type="submit" class="btn btn-warning">Salvar</button>
                 </form>
 
                 @if (isset($mensagens))
@@ -32,6 +31,5 @@
             @endif
               </div>
             </div>
-        </div>
 
 @endsection

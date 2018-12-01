@@ -4,7 +4,6 @@
 
 @section('section')
 
-        <div class="row">
             <div class="col-lg-12">
                 <form role="form" method="POST" action="{{ route('produto_update') }}" enctype="multipart/form-data" class="form_produto">
                         @csrf
@@ -58,11 +57,10 @@
                                 <input type="checkbox" name="promocao" value="1"  @if($produto->promocao == true) checked @else @endif>Sim
                        </div>
                         <div class="form-group">
-                                <button type="submit" class="btn btn-default">Salvar</button>
+                                <button type="submit" class="btn btn-warning">Salvar</button>
                         </div>
                 </form>
               </div>
             </div>
-        </div>
 
 @endsection

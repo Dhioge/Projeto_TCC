@@ -4,7 +4,6 @@
 
 @section('section')
 
-        <div class="row">
             <div class="col-lg-12">
                 <form role="form" method="POST" action="{{ route('produto_store') }}" enctype="multipart/form-data" class="form_produto">
                         @csrf
@@ -54,11 +53,10 @@
                             <label for="ex">Exibir como Promoção?</label>
                             <input type="checkbox" name="promocao" value="1">Sim</div>
                         <div class="form-group">
-                             <button type="submit" class="btn btn-default">Salvar</button>
+                             <button type="submit" class="btn btn-success">Salvar</button>
                     </div>
                 </form>
               </div>
             </div>
-        </div>
 
 @endsection

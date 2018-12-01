@@ -14,7 +14,7 @@
             @csrf
             <input type="hidden" id="id_delete" value="" name="id_delete">
             <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancelar</button>
-            <input type="submit" class="btn btn-primary">
+            <input type="submit" class="btn btn-primary" value="Excluir">
           </form>
           </div>
       </div>

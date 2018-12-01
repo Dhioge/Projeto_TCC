@@ -2,7 +2,7 @@
 @section('script_excluir')
     <script>
     function atribuir_informacoes(valor){
-    var nome = $('.excluir-btn').attr('name');
+    var nome = $('.excluir-btn').attr('name');//pega o name que esta relacionado com a rota
     $('#id_delete').val(valor);
     $('.delete-form').attr('action','{{ route("index") }}/admin/'+nome+'/delete/');
     }
@@ -21,15 +21,9 @@
 @component('admin.modal.excluir_modal')
 @endcomponent
         <div id="page-wrapper" style="margin-top:20">
-            <div class="row">
-                <div class="col-lg-12">
                     <h1 class="page-header">@yield('page_heading')</h1>
-                <!-- /.col-lg-12 -->
-            </div>
-                <div class="col-lg-12">
+        
                 @yield('section')
-            </div>
-            <!-- /#page-wrapper -->
         </div>
     </div>
    

@@ -17,7 +17,6 @@
     <link href="{{ asset('/vendor/') }}/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css"> <!-- latest 5.0.13 june 2018, needs update -->
     <!-- Custom styles for this template-->
     <link href="{{ asset('/css/') }}/sb-admin.css" rel="stylesheet">
-    
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
     <link rel="stylesheet" href="{{ asset('css/admin.css') }}">
     <link rel="stylesheet" href="{{ asset('css/timeline.css') }}">
@@ -34,10 +33,10 @@
 
 <script src="{{ asset('/js/') }}/jquery.easing.compatibility.js"></script>
 
+<script src="{{ asset('/js/') }}/Chart.js"></script>
 <script src="{{ asset('/js/') }}/Chart.bundle.js"></script>
 <script src="{{ asset('/vendor/') }}/datatables/jquery.dataTables.js"></script>
 <script src="{{ asset('/vendor/') }}/datatables/dataTables.bootstrap4.js"></script>
-<script src="{{ asset('/js/') }}/sb-admin.js"></script>
 
 <script src="{{ asset('/js/') }}/sb-admin-charts.js"></script>
 
@@ -51,20 +50,11 @@
 <script>
     $(document).ready(function(){
         $('.preco').maskMoney();
-        $('.preco2').maskMoney({
-    allowNegative: true,
-    thousands: '.',
-    decimal: ',',
-    affixesStay: false
-  }).attr('maxlength', maxLength).trigger('mask.maskMoney');
-        
-
-    $('.form_produto').on('submit', function(e) {
-    var v = $(".preco").maskMoney('destroy').val().replace(/Rp\s|[.]/g, '').replace(/Rp\s|[,]/g, '.').replace(/Rp\s|[R$]/g, '');
-    $(".preco").val(v);
-})
-    
-    });
+        $('.form_produto').on('submit', function(e) {
+            var v = $(".preco").maskMoney('destroy').val().replace(/Rp\s|[.]/g, '').replace(/Rp\s|[,]/g, '.').replace(/Rp\s|[R$]/g, '');
+            $(".preco").val(v);
+        })
+        });
     $('#toggleNavPosition').click(function() {
         $('body').toggleClass('fixed-nav');
         $('nav').toggleClass('fixed-top static-top');

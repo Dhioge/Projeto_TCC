@@ -4,26 +4,25 @@
 
 @section('section')
 Sugestão de {{ $notificacao->name }}
-        <div class="row">
             <div class="col-lg-12">
                 <form role="form" method="POST" action="{{ route('update_sugestao') }}" enctype="multipart/form-data">
                     @csrf
                     <input type="hidden" name="id" value="{{ $produto->produto_id }}">
-                <div class="form-group">
+                <div class="form-group" >
                     <label for="ex">Nome</label>
-                    <input name="nome" id="nome" class="form-control" value="{{ $produto->nome }}" required>
+                    <input name="nome" id="nome" class="form-control" value="{{ $produto->nome }}" required disabled>
                 </div>
                 <div class="form-group">
                     <label for="ex">Preço</label>
-                    <input name="preco" id="preco" class="form-control" value="{{ $produto->preco }}" required>
+                    <input name="preco" id="preco" class="form-control" value="{{ $produto->preco }}" required disabled>
                 </div>
                     <div class="form-group">
                 <div class="form-group">
                         <label for="ex">Descrição</label>
-                <input type="text" name="descricao" id="descricao" class="form-control" value="{{ $produto->descricao }}" required>
+                <input type="text" name="descricao" id="descricao" class="form-control" value="{{ $produto->descricao }}" required disabled>
                     </div>
                     <div class="form-group">
-                            <button type="submit" class="btn btn-default">Enviar</button>
+                            <button type="submit" class="btn btn-success">Salvar</button>
                     </div>
             </form>
                 @if (isset($mensagens))
@@ -33,6 +32,5 @@ Sugestão de {{ $notificacao->name }}
             @endif
             </div>
             </div>
-        </div>
 
 @endsection

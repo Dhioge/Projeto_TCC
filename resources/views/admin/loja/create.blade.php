@@ -4,7 +4,6 @@
 
 @section('section')
 
-        <div class="row">
             <div class="col-lg-12">
                 <form role="form" method="POST" action="{{ route('loja_store') }}" enctype="multipart/form-data">
                         @csrf
@@ -20,9 +19,8 @@
                             <label for="ex">Slogan</label>
                             <input type="file" name="slug" id="slug" class="form-control" required>
                     </div>
-                    <button type="submit" class="btn btn-default">Salvar</button>
+                    <button type="submit" class="btn btn-success">Salvar</button>
                 </form>
               </div>
-            </div>
 
 @endsection

@@ -4,7 +4,6 @@
 
 @section('section')
 
-        <div class="row">
             <div class="col-lg-12">
                 <form role="form" method="POST" action="{{ route('subcategoria_store') }}">
                         @csrf
@@ -23,10 +22,9 @@
                         <label for="ex">Nome</label>
                         <input name="nome" id="nome" class="form-control" value="{{ $subcategoria->nome }}">
                     </div>
-                    <button type="submit" class="btn btn-default">Salvar</button>
+                    <button type="submit" class="btn btn-warning">Salvar</button>
                 </form>
               </div>
             </div>
-        </div>
 
 @endsection
