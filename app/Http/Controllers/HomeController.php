@@ -35,6 +35,7 @@ class HomeController extends Controller
 
             //se o requisicao de subcategoria estiver vazio ele mostra as promocoes
             if(!$request->subcategoria_id){
+                $titulo = true;
                 $produtos = Produto::select('lojas.nome as loja_nome','lojas.site','produtos.*')
                 ->join('lojas','lojas.id','=','produtos.loja_id')
                 ->where('promocao',1)->paginate(15);
@@ -58,7 +59,8 @@ class HomeController extends Controller
             }
             else
             {
-            //senao ele mostra a subcategoria selecionada
+                $titulo = false;
+                //senao ele mostra a subcategoria selecionada
                 $produtos = Produto::select('lojas.nome as loja_nome','lojas.site','produtos.*')->join('lojas','lojas.id','=','produtos.loja_id')
                 ->where('subcategoria_id',$request->subcategoria_id)
                 ->paginate(20);
@@ -91,13 +93,15 @@ class HomeController extends Controller
     else
      //senao ele pesquisa o que é contido na requisicao "pesquisar"
     {
+
+        $titulo = false;
        $produtos = $this->pesquisar($request);
        $ordenar = false;
     }
       $categoria = Categoria::all();//retorna categorias para construir o menu
       $subcategoria = Subcategoria::all();//retorna subcategorias para construir o menu
       $subcategoria_id = isset($request->subcategoria_id)? $request->subcategoria_id : 0;
-      return view('site.shop',["produtos" => $produtos,'categoria'=>$categoria,'subcategoria'=>$subcategoria,'ordenar'=>$ordenar,'subcategoria_id'=> $subcategoria_id]);
+      return view('site.shop',["titulo" => $titulo, "produtos" => $produtos,'categoria'=>$categoria,'subcategoria'=>$subcategoria,'ordenar'=>$ordenar,'subcategoria_id'=> $subcategoria_id]);
     
     }
 

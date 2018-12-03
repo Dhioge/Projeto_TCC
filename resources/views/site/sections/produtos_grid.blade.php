@@ -7,7 +7,12 @@
             @endif
     <div class="container">
         <div class="row">
-            
+            <div class="col-lg-12 mb-12 text-center"  >
+                    @if ($titulo == true)
+                    <h2 class="text-center">Produtos em Promoção:</h2>
+                    @endif
+                    
+            </div>
                 @component('site.modal.modal_ver_produto')
                 @endcomponent
                 
@@ -18,7 +23,7 @@
         </div>
          
         <div class="row row-pb-md" >
-            
+
             @foreach ($produtos as $produto)
             <div class="col-lg-3 mb-4 text-center"  >
                 <div class="product-entry border"  style="padding: 15px;">
@@ -41,7 +46,7 @@
             
         </div>
         <div class="row">
-            <div class="col-md-12 text-center">
+            <div class="col-md-12 ">
                 {{ $produtos->links() }}
             </div>
         </div>
