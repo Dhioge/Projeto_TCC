@@ -26,6 +26,10 @@
                             <label for="ex">Descrição</label>
                             <input type="text" name="descricao" id="descricao" class="form-control" value="" required>
                       </div>
+                    <div class="form-group">
+                            <label for="ex">Imagem</label>
+                            <input type="file" name="img" id="img" class="form-control" accept="image/*" required>
+                    </div>
                       <div class="form-group">
                                   <button type="submit" class="btn btn-default">Enviar</button>
                       </div>

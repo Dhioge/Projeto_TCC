@@ -4,15 +4,7 @@
     $.getJSON( "http://127.0.0.1:8000/notificacoes", function( data ) {
       $.each( data, function( key, val ) {
         var items = [];
-        var modal = 'nenhum'
-
-        if(val['tipo']=='atualizar_produto'){
-            modal = 'atualizar_produto'
-        }
-        else{
-            modal = 'mensagem'
-        }
-        
+        if(val['status']=='nao_lida'){
         items.push('<a href="'+'/alterar_produto/'+val['id']+'" class="list-group-item">'
                                 +'<i class="fa fa-tasks fa-fw"></i>'+ val['titulo']
                                 +'<span class="pull-right text-muted small"><em>'+val['created_at']+'</em></span>'
@@ -20,9 +12,10 @@
         $( "<a/>", {
         "class": "dropdown-item",
         "href" : "",
-        "data-target" : "#"+modal,
+        "data-target" : "#atualizar_produto",
         html: items.join( "" )
         }).appendTo( ".drop-itens");
+        }
       });
     });
     }

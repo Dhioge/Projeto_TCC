@@ -116,8 +116,6 @@ class ProdutoController extends Controller
             $nome_img=$this->salvar_imagem($request,'Produtos');
             $produto->img = $nome_img;
         }
-        
-        
         $produto->subcategoria_id = $request->subcategoria_id;
         $produto->descricao = $request->descricao;
         $produto->promocao = isset($request->promocao)? $request->promocao : false ;

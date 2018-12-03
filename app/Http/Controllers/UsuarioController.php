@@ -55,7 +55,7 @@ class UsuarioController extends Controller
     {
         $notificacao = new Notificacoes;
         $notificacao->usuario_id = $request->usuario_id;
-        $notificacao->tipo = 'atualizar_produto';
+        $notificacao->status = 'nao_lida';
         $notificacao->titulo = 'Sugestão de Atualização';
         $notificacao->texto = 'Alteração do Produto '.$request->nome;
         $notificacao->destinatario = 'admin';
@@ -66,6 +66,8 @@ class UsuarioController extends Controller
         $produto->nome = $request->nome;
         $produto->descricao = $request->descricao;
         $produto->preco = $request->preco;
+        $nome_img=$this->salvar_imagem($request,'Produtos_alteracoes');
+        $produto->img = $nome_img;
         $produto->save();
         return redirect('usuario')->with('msg', 'Sugestão enviada com sucesso!');
     }
@@ -112,5 +114,36 @@ class UsuarioController extends Controller
     public function destroy(Usuario $usuario)
     {
         
+    }
+    public function salvar_imagem(Request $request,$diretorio)
+    {
+    // Define o valor default para a variável que contém o nome da imagem 
+    $nameFile = null;
+ 
+    // Verifica se informou o arquivo e se é válido
+    if ($request->hasFile('img') && $request->file('img')->isValid()) {
+         
+        // Define um aleatório para o arquivo baseado no timestamps atual
+        $name = uniqid(date('HisYmd'));
+ 
+        // Recupera a extensão do arquivo
+        $extension = $request->img->extension();
+ 
+        // Define finalmente o nome
+        $nameFile = "{$name}.{$extension}";
+ 
+        // Faz o upload:
+        $upload = $request->img->storeAs($diretorio, $nameFile);
+        // Se tiver funcionado o arquivo foi armazenado em storage/app/public/categories/nomedinamicoarquivo.extensao
+ 
+        // Verifica se NÃO deu certo o upload (Redireciona de volta)
+        if ( !$upload ){
+            return 'error';
+ 
+        }else{
+            return $nameFile;
+        }
+        
+        }
     }
 }

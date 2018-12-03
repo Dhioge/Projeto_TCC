@@ -1,6 +1,10 @@
 
 <div class="colorlib-product" >
-   
+    @if (isset($mensagens))
+                <span class="help-block">
+                <strong>{{ $mensagens }}</strong>
+            </span>
+            @endif
     <div class="container">
         <div class="row">
             

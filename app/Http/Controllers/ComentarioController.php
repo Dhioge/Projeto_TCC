@@ -49,7 +49,7 @@ class ComentarioController extends Controller
         $comentario->comentario = $request->comentario;
         $comentario->produto_id = $request->produto_id;
         $comentario->save();
-
+        return redirect(route('shop'))->with('msg', 'Comentario enviado com sucesso');;
     }
 
     /**

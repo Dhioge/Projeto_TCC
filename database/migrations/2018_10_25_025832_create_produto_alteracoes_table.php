@@ -20,6 +20,7 @@ class CreateProdutoAlteracoesTable extends Migration
             $table->integer('produto_id');
             $table->string('nome');
             $table->float('preco');
+            $table->string('img');
             $table->string('descricao');
             $table->timestamps();
         });

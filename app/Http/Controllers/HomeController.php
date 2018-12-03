@@ -44,14 +44,14 @@ class HomeController extends Controller
                     {
                         $produtos = Produto::select('lojas.nome as loja_nome','lojas.site','produtos.*')
                         ->join('lojas','lojas.id','=','produtos.loja_id')->where('promocao',1)
-                        ->orderBy('preco', 'DESC')
+                        ->orderBy('preco', 'ASC')
                         ->paginate(15);
                     }
                     else if($request->order==2)
                     {
                         $produtos = Produto::select('lojas.nome as loja_nome','lojas.site','produtos.*')
                         ->join('lojas','lojas.id','=','produtos.loja_id')
-                        ->where('promocao',1)->orderBy('preco', 'ASC')
+                        ->where('promocao',1)->orderBy('preco', 'DESC')
                         ->paginate(15);
                     }
                 }
@@ -71,7 +71,7 @@ class HomeController extends Controller
                         $produtos = Produto::select('lojas.nome as loja_nome','lojas.site','produtos.*')
                         ->join('lojas','lojas.id','=','produtos.loja_id')
                         ->where('subcategoria_id',$request->subcategoria_id)
-                        ->orderBy('preco', 'DESC')
+                        ->orderBy('preco', 'ASC')
                         ->paginate(20);
                     }
                     else if($request->order==2)
@@ -80,7 +80,7 @@ class HomeController extends Controller
                         $produtos = Produto::select('lojas.nome as loja_nome','lojas.site','produtos.*')
                         ->join('lojas','lojas.id','=','produtos.loja_id')
                         ->where('subcategoria_id',$request->subcategoria_id)
-                        ->orderBy('preco', 'asc')->paginate(20);
+                        ->orderBy('preco', 'DESC')->paginate(20);
                     }
                     
                 }
@@ -104,8 +104,17 @@ class HomeController extends Controller
 
 
     public function pesquisar(Request $request){
-        $produtos = Produto::select('lojas.nome as loja_nome','lojas.site','produtos.*')->join('lojas','lojas.id','=','produtos.loja_id')->where('nome', 'like', '%' . $request->pesquisar . '%')->paginate(20);
-        return $produtos;
+        if($request->filtro_pesquisa == 0)
+        {    
+         $produtos = Produto::select('lojas.nome as loja_nome','lojas.site','produtos.*')->join('lojas','lojas.id','=','produtos.loja_id')->where('produtos.nome', 'like', '%' . $request->pesquisar . '%')->paginate(20);
+        }
+        elseif($request->filtro_pesquisa == 1){
+         $produtos = Produto::select('lojas.nome as loja_nome','lojas.site','produtos.*')->join('lojas','lojas.id','=','produtos.loja_id')->where('produtos.nome', 'like', '%' . $request->pesquisar . '%')->orderBy('preco', 'ASC')->paginate(20);
+        }elseif($request->filtro_pesquisa == 2){
+         $produtos = Produto::select('lojas.nome as loja_nome','lojas.site','produtos.*')->join('lojas','lojas.id','=','produtos.loja_id')->where('produtos.nome', 'like', '%' . $request->pesquisar . '%')->orderBy('preco', 'DESC')->paginate(20);
+        }
+    return $produtos;
+
     }
 
 

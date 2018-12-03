@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Notificacoes;
+use File;
 use App\ProdutoAlteracoes;
 use App\Usuario;
 use App\Produto;
@@ -37,9 +38,18 @@ class NotificacoesController extends Controller
         $produto = Produto::find($request->id);
         $produto->nome = $request->nome;
         $produto->descricao = $request->descricao;
+        $nameFile= "storage/Produtos/";
+        if(file_exists($request->img)) {
+            File::delete($nameFile.$produto->img);
+            $nome_img=$this->salvar_imagem($request,'Produtos');
+            $produto->img = $nome_img;
+        }
         $produto->preco = $request->preco;
+        $notificacao = Notificacoes::find($request->id_notificacao);
+        $notificacao->status = 'lida';
         $produto->update();
-        return redirect(route('produto_index'))->with('msg', 'Sugestão aceita com sucesso!');;
+        $notificacao->update();
+        return redirect(route('produto_index'))->with('msg', 'Sugestão aceita com sucesso!');
     }
 
     /**
@@ -96,5 +106,36 @@ class NotificacoesController extends Controller
     public function destroy(Notificacoes $notificacoes)
     {
         //
+    }
+    public function salvar_imagem(Request $request,$diretorio)
+    {
+    // Define o valor default para a variável que contém o nome da imagem 
+    $nameFile = null;
+ 
+    // Verifica se informou o arquivo e se é válido
+    if ($request->hasFile('img') && $request->file('img')->isValid()) {
+         
+        // Define um aleatório para o arquivo baseado no timestamps atual
+        $name = uniqid(date('HisYmd'));
+ 
+        // Recupera a extensão do arquivo
+        $extension = $request->img->extension();
+ 
+        // Define finalmente o nome
+        $nameFile = "{$name}.{$extension}";
+ 
+        // Faz o upload:
+        $upload = $request->img->storeAs($diretorio, $nameFile);
+        // Se tiver funcionado o arquivo foi armazenado em storage/app/public/categories/nomedinamicoarquivo.extensao
+ 
+        // Verifica se NÃO deu certo o upload (Redireciona de volta)
+        if ( !$upload ){
+            return 'error';
+ 
+        }else{
+            return $nameFile;
+        }
+        
+        }
     }
 }

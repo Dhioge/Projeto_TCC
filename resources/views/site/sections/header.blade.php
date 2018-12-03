@@ -62,7 +62,17 @@
                 </li>    
                 <form class="form-inline my-2 my-lg-0 float-right" method="post" action="{{  route('shop')}}">
                         @csrf
-                        <input class="form-control mr-sm-2" type="search" placeholder="Pesquisar.." aria-label="Search" name="pesquisar">
+                      
+                        <input class="form-control mr-sm-2" type="search" required placeholder="Pesquisar.." aria-label="Search" name="pesquisar">
+                        <div class="form-group">
+                                <label for="exampleFormControlSelect2" class="custom-select">Filtro: 
+                                <select id="filtro_pesquisa" name="filtro_pesquisa" required id="styledSelect1">
+                                    <option value="0" selected>...</option>
+                                    <option value="1">Menor Preço</option>
+                                    <option value="2">Maior Preço</option>
+                                </select>
+                            </label>
+                                </div>
                         <button class="btn btn-outline-success my-2 my-sm-0" type="submit"><i class="fa fa-search"></i></button>
                       </form>    
             </ul>
