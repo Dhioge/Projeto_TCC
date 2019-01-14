@@ -22,7 +22,11 @@ class NotificacoesController extends Controller
         $notificacao = Notificacoes::orderBy('created_at', 'desc')->take(7)->get();
         return $notificacao->toJson();
     }
-    public function alterar_produto($id){
+
+
+
+    public function alterar_produto($id)
+    {
     $produto = ProdutoAlteracoes::where('notificacao_id',$id)->first();
     $notificacao = Notificacoes::select('usuarios.name','usuarios.email','notificacoes.*')->join('usuarios','usuarios.id','=','notificacoes.usuario_id')->where('notificacoes.id',$id)->first();
     return view('admin.alterar_produto.edit',compact('produto'),compact('notificacao'));

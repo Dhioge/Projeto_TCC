@@ -94,7 +94,7 @@ class HomeController extends Controller
      //senao ele pesquisa o que é contido na requisicao "pesquisar"
     {
 
-        $titulo = false;
+       $titulo = false;
        $produtos = $this->pesquisar($request);
        $ordenar = false;
     }
