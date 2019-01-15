@@ -20,7 +20,7 @@
                       </div>
                       <div class="form-group">
                           <label for="ex">Preço</label>
-                          <input name="preco" id="preco" class="form-control" value="" required>
+                          <input name="preco" id="preco" class="preco form-control" value="" data-affixes-stay="true" data-prefix="R$ " data-thousands="." data-decimal="," required>
                       </div>
                       <div class="form-group">
                             <label for="ex">Descrição</label>

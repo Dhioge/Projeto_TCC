@@ -36,7 +36,7 @@
                             </a>
                             <div class="desc">
                                 <span class="price">Ir a loja:<a href="http://{{ $produto->site }}"  class="text-center" >{{ $produto->loja_nome }}</a></span>
-                                <span class="price text-center">Preço: ${{ $produto->preco }}</span>
+                                <span class="price preco text-center">{{ $produto->preco }}</span>
                             </div>
                             <a href="" onclick="comentarios({{$produto->id}})" class="text-center" data-toggle="modal" data-target="#ver_comentario"><i class="fa fa-comments">Comentarios</i></a>
                             

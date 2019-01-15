@@ -24,7 +24,7 @@ class CreateProdutosTable extends Migration
             $table->integer('desconto');
             $table->string('img');
             $table->string('descricao');
-            $table->float('preco', 15, 2);
+            $table->string('preco');
             $table->timestamps();
         });
     }

@@ -49,12 +49,8 @@
 <script src="{{ asset('/js/') }}/jquery.maskMoney.js"></script>
 <script>
     $(document).ready(function(){
-        $('.preco').maskMoney();
-        $('.form_produto').on('submit', function(e) {
-            var v = $(".preco").maskMoney('destroy').val().replace(/Rp\s|[.]/g, '').replace(/Rp\s|[,]/g, '.').replace(/Rp\s|[R$]/g, '');
-            $(".preco").val(v);
-        })
-        });
+
+    $('.preco').maskMoney();
     $('#toggleNavPosition').click(function() {
         $('body').toggleClass('fixed-nav');
         $('nav').toggleClass('fixed-top static-top');
@@ -63,6 +59,7 @@
         $('nav').toggleClass('navbar-dark navbar-light');
         $('nav').toggleClass('bg-dark bg-light');
         $('body').toggleClass('bg-dark bg-light');
+    });
     });
 
 </script>

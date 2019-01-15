@@ -89,8 +89,11 @@
 	<script src="{{ asset('/js') }}/main.js"></script>	
 	<script type="text/javascript" src="/DataTables/datatables.min.js"></script>
 	<script src="{{ asset("js/Chart.js") }}"></script>
+	
+<script src="{{ asset('/js/') }}/jquery.maskMoney.js"></script>
 	<script>
 		$(document).ready(function(){
+			$('.preco').maskMoney();
 			$(function () {
   $('[data-toggle="tooltip"]').tooltip()
 })
