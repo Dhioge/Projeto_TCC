@@ -19,7 +19,7 @@ class CreateProdutoAlteracoesTable extends Migration
             $table->foreign('notificacao_id')->references('id')->on('notificacoes')->onDelete('cascade');;
             $table->integer('produto_id');
             $table->string('nome');
-            $table->float('preco');
+            $table->string('preco');
             $table->string('img');
             $table->string('descricao');
             $table->timestamps();
